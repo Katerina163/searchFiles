@@ -64,7 +64,7 @@ public class Search {
 
         @Override
         public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-            if (mask.length() == 0 || file.getFileName().toString().contains(mask)) {
+            if (mask.length() == 0 || mask.equals("*") || file.getFileName().toString().contains(mask)) {
                 list.add(file);
             }
             return FileVisitResult.CONTINUE;
