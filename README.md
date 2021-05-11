@@ -1,3 +1,7 @@
+[![Build Status](https://www.travis-ci.com/Katerina163/searchFiles.svg?branch=main)](https://www.travis-ci.com/Katerina163/searchFiles)
+
+
+
 Программа ищет данные в заданном каталоге и подкаталогах.
 
 
