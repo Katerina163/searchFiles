@@ -14,7 +14,7 @@ public class Main {
     }
 
     public void search(ArgsName argsName) throws IOException {
-        List<Path> list = Search.search(Paths.get(argsName.get("d")), argsName.get("t"), argsName.get("n"));
+        List<Path> list = Search.search(argsName);
         Path file = Paths.get(argsName.get("o"));
         ResultToFile.writingTo(file, list);
     }

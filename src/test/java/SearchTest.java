@@ -11,46 +11,36 @@ import static org.junit.Assert.*;
 public class SearchTest {
     @Test
     public void whenName() throws IOException {
-        Path root = Paths.get("./for_test");
-        String searchType = "name";
-        String string = "one";
-        List<Path> result = Search.search(root, searchType, string);
+        ArgsName argsName = ArgsName.of(new String[] {"-d=./for_test", "-n=one", "-t=name", "-o=log.txt"});
+        List<Path> result = Search.search(argsName);
         assertThat(result.get(0), is(Paths.get("./for_test/1/one.txt")));
         assertThat(result.get(1), is(Paths.get("./for_test/one.txt")));
     }
 
     @Test
     public void whenMaskAllElement() throws IOException {
-        Path root = Paths.get("./for_test");
-        String searchType = "mask";
-        String string = "*";
-        List<Path> result = Search.search(root, searchType, string);
+        ArgsName argsName = ArgsName.of(new String[] {"-d=./for_test", "-n=*", "-t=mask", "-o=log.txt"});
+        List<Path> result = Search.search(argsName);
         assertThat(result.size(), is(7));
     }
 
     @Test
     public void whenMask() throws IOException {
-        Path root = Paths.get("./for_test");
-        String searchType = "mask";
-        String string = "exa*";
-        List<Path> result = Search.search(root, searchType, string);
+        ArgsName argsName = ArgsName.of(new String[] {"-d=./for_test", "-n=exa*", "-t=mask", "-o=log.txt"});
+        List<Path> result = Search.search(argsName);
         assertThat(result.get(0), is(Paths.get("./for_test/example.txt")));
     }
 
     @Test
     public void whenRegex() throws IOException {
-        Path root = Paths.get("./for_test");
-        String searchType = "regex";
-        String string = "[a]";
-        List<Path> result = Search.search(root, searchType, string);
+        ArgsName argsName = ArgsName.of(new String[] {"-d=./for_test", "-n=[a]", "-t=regex", "-o=log.txt"});
+        List<Path> result = Search.search(argsName);
         assertThat(result.get(0), is(Paths.get("./for_test/1/star.png")));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void whenWrong() throws IOException {
-        Path root = Paths.get("./for_test");
-        String searchType = "hello";
-        String string = "exa";
-        List<Path> result = Search.search(root, searchType, string);
+        ArgsName argsName = ArgsName.of(new String[] {"-d=./for_test", "-n=exa", "-t=hello", "-o=log.txt"});
+        List<Path> result = Search.search(argsName);
     }
 }

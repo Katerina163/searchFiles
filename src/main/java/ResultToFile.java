@@ -9,7 +9,8 @@ public class ResultToFile {
                 new java.io.FileWriter(path.toString(), Charset.forName("UTF-8"))
         )) {
             for (Path s : list) {
-                out.write(s.toString() + System.lineSeparator());
+                out.write(s.toString());
+                out.newLine();
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -20,8 +20,8 @@ public class ArgsName {
             }
             values.put(array[0].substring(1), array[1]);
         }
-        if (values.size() != 4 ||
-                !values.containsKey("d") || !values.containsKey("n")
+        if (values.size() != 4
+                || !values.containsKey("d") || !values.containsKey("n")
                 || !values.containsKey("t") || !values.containsKey("o")) {
             throw new IllegalArgumentException("Required arguments are missing");
         }
